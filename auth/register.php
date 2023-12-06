@@ -4,9 +4,9 @@
 <?php
 if(isset($_POST['submit'])){
  if(empty($_POST['name']) OR empty($_POST['email'])
-  OR empty($_POST['username']) OR empty($_POST['password']) empty(OR $_POST['about']))
+ OR empty($_POST['username']) OR empty($_POST['password']) OR empty($_POST['about']))
   {
-    echo "<script>alert("empty field!!!");</script>";
+    echo "<script>alert('Empty field!!!');</script>";
   }
 
 else{
@@ -19,20 +19,38 @@ else{
 
   $dir = "img/" . basename($avatar);
 try{
+
+$stmt = $conn->prepare("SELECT id FROM register WHERE username = :username AND email = :email");
+$stmt->execute([
+  'username' => $username,
+  'email' => $email,
+]);
+$stt = $conn->prepare("SELECT id FROM register WHERE username = :username OR email = :email");
+$stt->execute([
+  'username' => $username,
+  'email' => $email,
+]);
+$sttt = $stt->fetch();
+ if($sttt){
+   echo '<script>alert("username or email already exists");</script>';
+ }
+ else{
   $insert = $conn->prepare("INSERT INTO register (name, username,
-  email, password,about) VALUES(:name , :username , :email, :password, :about, :avatar)");
+  email, password,about, avatar) VALUES(:name , :username , :email, :password, :about, :avatar)");
 
   $insert->execute([
-    :name => $name,
-    :username => $username,
-    :email => $email,
-    :password => $password,
-    :about => $about,
-    :avatar => $avatar
-  ]);
+    'name' => $name,
+    'username' => $username,
+    'email' => $email,
+    'password' => $password,
+    'about' => $about,
+    'avatar' => $avatar,
+]);
+echo '<script>alert("registered successfully!");</script>';
+}
 }
 catch(PDOException $error){
-  echo error->getMessage();
+  echo $error->getMessage();
 }
 }
 }
