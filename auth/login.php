@@ -8,13 +8,26 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 
-$login = $conn->prepare("SELECT id, password FROM register WHERE email = :email");
+$login = $conn->prepare("SELECT * FROM register WHERE email = :email");
 $login->execute([
   'email' => $email,
 ]);
 $data = $login->fetch();
 if($data && password_verify($password, $data['password'])){
-  echo '<script>alert("login successful!");</script>';
+  //sessions are used to carry information across multiple pages
+  //session is also used to limit the user from some pages unless
+  //login, if login to give the user valdating(access to different pages).
+
+  $_SESSION['name'] = $data['name'];
+  $_SESSION['id'] = $data['id'];
+  $_SESSION['email'] = $data['email'];
+  $_SESSION['avatar'] = $data['avatar'];
+
+
+header("location: " .URL."");
+/*This line of code redirects the user to the URL specified in the URL constant or variable. It leverages
+ the HTTP Location header to direct the user's browser to a new page, URL, or endpoint within the website.
+*/
 }
 else{
   echo '<script>alert("wrong email or password!");</script>';

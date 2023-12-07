@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 define("URL", "http://localhost/forum");
 
 ?>
@@ -37,6 +38,18 @@ define("URL", "http://localhost/forum");
             <li><a href="register.html">Register</a></li>
             <li><a href="create.html">Create Topic</a></li>
           </ul>
+          <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle ml-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <?php echo $_SESSION['name']; ?>
+  <img src="<?php echo $_SESSION['avatar']; ?>" class="avatar-image" alt="User Avatar">
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
         </div><!--/.nav-collapse -->
       </div>
     </div>
