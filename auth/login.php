@@ -22,6 +22,7 @@ if($data && password_verify($password, $data['password'])){
   $_SESSION['id'] = $data['id'];
   $_SESSION['email'] = $data['email'];
   $_SESSION['avatar'] = $data['avatar'];
+  
 
 
 header("location: " .URL."");

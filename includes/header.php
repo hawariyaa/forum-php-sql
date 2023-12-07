@@ -37,18 +37,22 @@ define("URL", "http://localhost/forum");
             <li class="active"><a href="index.html">Home</a></li>
             <li><a href="register.html">Register</a></li>
             <li><a href="create.html">Create Topic</a></li>
-          </ul>
-          <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle ml-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li><div class="dropdown show">
+    <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <?php echo $_SESSION['name']; ?>
-  <img src="<?php echo $_SESSION['avatar']; ?>" class="avatar-image" alt="User Avatar">
-  </button>
-  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
+    <?php if(isset($_SESSION['avatar'])): ?>
+        <img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar">
+    <?php endif; ?>
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#" style="display: block; width:100%;">My topics</a>
+      <a class="dropdown-item" href="#" style="display: block; width:100%;">MY replies</a>
+      <a class="dropdown-item" href="#" style="display: block; width:100%;">logout</a>
+    </div>
+  </div></li>
+          </ul>
+
 
         </div><!--/.nav-collapse -->
       </div>
