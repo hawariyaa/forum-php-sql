@@ -30,7 +30,7 @@ define("auth", "http://localhost/forum/auth");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Forum</a>
+          <a class="navbar-brand" href="<?php echo URL; ?>/index.php">Forum</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -39,7 +39,7 @@ define("auth", "http://localhost/forum/auth");
 
 
           <?php if(isset($_SESSION['name'])): ?>
-          <li><a href="create.html">Create Topic</a></li>
+          <li><a href="<?php echo URL; ?>/create.php">Create Topic</a></li>
             <li><div class="dropdown show">
     <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <?php echo $_SESSION['name']; ?>
