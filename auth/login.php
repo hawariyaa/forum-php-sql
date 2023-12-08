@@ -2,6 +2,13 @@
   <?php require "../config/config.php"; ?>
 <?php
 
+
+if(isset($_SESSION['name'])){
+  header("location: ".URL."");
+}
+
+
+
 try{
 if(isset($_POST['submit'])){
 $email = $_POST['email'];
@@ -22,7 +29,7 @@ if($data && password_verify($password, $data['password'])){
   $_SESSION['id'] = $data['id'];
   $_SESSION['email'] = $data['email'];
   $_SESSION['avatar'] = $data['avatar'];
-  
+
 
 
 header("location: " .URL."");

@@ -2,7 +2,7 @@
 
 session_start();
 define("URL", "http://localhost/forum");
-
+define("auth", "http://localhost/forum/auth");
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +34,12 @@ define("URL", "http://localhost/forum");
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="create.html">Create Topic</a></li>
+            <li class="active"><a href="index.php">Home</a></li>
+
+
+
+          <?php if(isset($_SESSION['name'])): ?>
+          <li><a href="create.html">Create Topic</a></li>
             <li><div class="dropdown show">
     <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <?php echo $_SESSION['name']; ?>
@@ -48,9 +51,13 @@ define("URL", "http://localhost/forum");
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <a class="dropdown-item" href="#" style="display: block; width:100%;">My topics</a>
       <a class="dropdown-item" href="#" style="display: block; width:100%;">MY replies</a>
-      <a class="dropdown-item" href="#" style="display: block; width:100%;">logout</a>
+      <a class="dropdown-item" href="<?php echo URL; ?>/auth/logout.php" style="display: block; width:100%;">logout</a>
     </div>
   </div></li>
+<?php else:   ?>
+  <li><a href="<?php echo auth; ?>/register.php">Register</a></li>
+  <li><a href="<?php echo auth; ?>/login.php">login</a></li>
+<?php endif; ?>
           </ul>
 
 

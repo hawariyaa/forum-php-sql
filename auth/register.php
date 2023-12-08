@@ -2,6 +2,14 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php"; ?>
 <?php
+
+//besically this is what we call validation can not be accessed
+//through the url
+if(isset($_SESSION['name'])){
+  header("location: ".URL."");
+}
+
+
 if(isset($_POST['submit'])){
  if(empty($_POST['name']) OR empty($_POST['email'])
  OR empty($_POST['username']) OR empty($_POST['password']) OR empty($_POST['about']))
