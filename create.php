@@ -7,10 +7,26 @@ if(!isset($_SESSION['name'])){
 }
 
 if(isset($_POST['submit'])){
-  if(empty($_POST['title']) OR empty($_POST['name'])){
+  if(empty($_POST['title']) OR empty($_POST['body'])){
     echo '<script>alert("empty field!")</script>';
   }
 }
+
+  $title = $_POST['title'];
+  $catagory = $_POST['catagory'];
+  $body = $_POST['body'];
+
+
+  $insert = $conn->prepare("INSERT INTO topic (title, category, body)
+   VALUES (:title, :category, :body)");
+
+
+  $insert->execute([
+    'title' => $title,
+    'category' => $catagory,
+    'body' => $body,
+  ]);
+
 
 ?>
 
@@ -30,12 +46,13 @@ if(isset($_POST['submit'])){
 							</div>
 							<div class="form-group">
 								<label>Category</label>
-								<select class="form-control">
+								<select name="catagory" class="form-control">
 									<option>Design</option>
 									<option>Development</option>
 									<option>Business & Marketing</option>
 									<option>Search Engines</option>
 									<option>Cloud & Hosting</option>
+                  <option>sport</option>
 							</select>
 							</div>
 								<div class="form-group">

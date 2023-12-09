@@ -28,6 +28,7 @@ if($data && password_verify($password, $data['password'])){
   $_SESSION['name'] = $data['name'];
   $_SESSION['id'] = $data['id'];
   $_SESSION['email'] = $data['email'];
+  $_SESSION['username'] = $data['username'];
   $_SESSION['avatar'] = $data['avatar'];
 
 
