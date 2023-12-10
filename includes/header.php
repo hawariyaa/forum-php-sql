@@ -39,12 +39,13 @@ define("auth", "http://localhost/forum/auth");
 
 
           <?php if(isset($_SESSION['name'])): ?>
-          <li><a href="<?php echo URL; ?>/create.php">Create Topic</a></li>
+          <li><a href="<?php echo URL; ?>/topics/create.php">Create Topic</a></li>
             <li><div class="dropdown show">
     <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <?php echo $_SESSION['name']; ?>
     <?php if(isset($_SESSION['avatar'])): ?>
-        <img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar">
+        <?php echo $_SESSION['avatar']['size']; ?>
+        <!<img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar"> >
     <?php endif; ?>
     </a>
 

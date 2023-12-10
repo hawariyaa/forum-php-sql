@@ -1,33 +1,38 @@
-<?php require "./includes/header.php"; ?>
-<?php require "./config/config.php"; ?>
+<?php require "../includes/header.php"; ?>
+<?php require "../config/config.php"; ?>
+
 <?php
 
 if(!isset($_SESSION['name'])){
   header("location: ".URL."");
 }
+else{
 
 if(isset($_POST['submit'])){
   if(empty($_POST['title']) OR empty($_POST['body'])){
     echo '<script>alert("empty field!")</script>';
   }
-}
+
 
   $title = $_POST['title'];
   $catagory = $_POST['catagory'];
   $body = $_POST['body'];
+  $username = $_SESSION['name'];
 
-
-  $insert = $conn->prepare("INSERT INTO topic (title, category, body)
-   VALUES (:title, :category, :body)");
+  $insert = $conn->prepare("INSERT INTO topic (title, catagory, body,username)
+   VALUES (:title, :catagory, :body, :username)");
 
 
   $insert->execute([
+
     'title' => $title,
-    'category' => $catagory,
+    'catagory' => $catagory,
     'body' => $body,
+    'username' => $username,
   ]);
+}
 
-
+}
 ?>
 
     <div class="container">
@@ -47,12 +52,12 @@ if(isset($_POST['submit'])){
 							<div class="form-group">
 								<label>Category</label>
 								<select name="catagory" class="form-control">
-									<option>Design</option>
-									<option>Development</option>
-									<option>Business & Marketing</option>
-									<option>Search Engines</option>
-									<option>Cloud & Hosting</option>
-                  <option>sport</option>
+									<option value="Design">Design</option>
+									<option value="Development">Development</option>
+									<option value="Business & Marketing">Business & Marketing</option>
+									<option value="Search Engines">Search Engines</option>
+									<option value="Cloud & Hosting">Cloud & Hosting</option>
+                  <option value="sport">sport</option>
 							</select>
 							</div>
 								<div class="form-group">
@@ -60,11 +65,11 @@ if(isset($_POST['submit'])){
 									<textarea id="body" rows="10" cols="80" class="form-control" name="body"></textarea>
 									<script>CKEDITOR.replace('body');</script>
 								</div>
-							<button type="submit" name="submit" class="color btn btn-default">Submit</button>
+							<button type="submit" name="submit" class="color btn btn-default">Create</button>
 						</form>
 					</div>
 				</div>
 			</div>
 
 
-<?php require "./includes/footer.php"; ?>
+<?php require "../includes/footer.php"; ?>

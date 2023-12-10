@@ -68,7 +68,7 @@ catch(PDOException $error){
                     name="password" placeholder="Enter A Password">
                     </div>
 
-			        <input name="submit" type="submit" class="color btn btn-default" value="Register" />
+			        <input name="submit" type="submit" class="color btn btn-default" value="Login" />
         </form>
 					</div>
 				</div>
