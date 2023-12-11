@@ -44,8 +44,8 @@ define("auth", "http://localhost/forum/auth");
     <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <?php echo $_SESSION['name']; ?>
     <?php if(isset($_SESSION['avatar'])): ?>
-        <?php echo $_SESSION['avatar']['size']; ?>
-        <!<img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar"> >
+
+        <img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar"> 
     <?php endif; ?>
     </a>
 

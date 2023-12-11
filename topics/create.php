@@ -19,8 +19,14 @@ if(isset($_POST['submit'])){
   $body = $_POST['body'];
   $username = $_SESSION['name'];
 
-  $insert = $conn->prepare("INSERT INTO topic (title, catagory, body,username)
-   VALUES (:title, :catagory, :body, :username)");
+  $image = $conn->query("SELECT register.avatar AS image FROM topic JOIN register
+          ON topic.username = register.username");
+  $theimage = $image->fetch();
+
+  $insert = $conn->prepare("INSERT INTO topic (title, catagory, body,username, userimage)
+   VALUES (:title, :catagory, :body, :username, :userimage)");
+
+
 
 
   $insert->execute([
@@ -29,8 +35,10 @@ if(isset($_POST['submit'])){
     'catagory' => $catagory,
     'body' => $body,
     'username' => $username,
+    'userimage' => $theimage['image'],
   ]);
 }
+
 
 }
 ?>
