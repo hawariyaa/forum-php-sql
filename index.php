@@ -3,7 +3,7 @@
 <?php
 
 $topic = $conn->query("SELECT topic.id As id, topic.title AS title, topic.catagory
-  AS catagory, topic.username AS username, register.avatar AS userimage, topic.date AS date, COUNT(reply.topic_id) AS countreply FROM topic JOIN reply JOIN register ON  topic.id = reply.topic_id GROUP BY (reply.topic_id) ");
+  AS catagory, topic.username AS username, topic.userimage AS userimage, topic.date AS date, COUNT(reply.topic_id) AS countreply FROM topic LEFT JOIN reply ON  topic.id = reply.topic_id GROUP BY (reply.topic_id) ");
 
   $topic->execute();
 
@@ -20,7 +20,7 @@ $topic = $conn->query("SELECT topic.id As id, topic.title AS title, topic.catago
 						<div class="clearfix"></div>
 						<hr>
 						<ul id="topics">
-               <?php foreach($alltopic as $topic): ?>
+<?php foreach($alltopic as $topic): ?>
 							<li class="topic">
 							<div class="row">
 							<div class="col-md-2">
@@ -28,7 +28,7 @@ $topic = $conn->query("SELECT topic.id As id, topic.title AS title, topic.catago
 							</div>
 							<div class="col-md-10">
 								<div class="topic-content pull-right">
-									<h3><a href="topic.html"><?php echo $topic->title; ?></a></h3>
+									<h3> <a href="topics/topic.php?id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a></h3>
 									<div class="topic-info">
 										<a href="category.html"><?php echo $topic->catagory; ?></a> >> <a href="profile.html"><?php echo $topic->username; ?></a> >> Posted on: <?php echo $topic->date; ?>
 										<span class="color badge pull-right"><?php echo $topic->countreply; ?></span>

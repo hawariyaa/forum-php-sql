@@ -34,7 +34,7 @@ define("auth", "http://localhost/forum/auth");
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.php">Home</a></li>
+            <li class="active"><a href="<?php echo URL; ?>/index.php">Home</a></li>
 
 
 
@@ -45,7 +45,7 @@ define("auth", "http://localhost/forum/auth");
     <?php echo $_SESSION['name']; ?>
     <?php if(isset($_SESSION['avatar'])): ?>
 
-        <img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar"> 
+        <img src="<?php echo $_SESSION['avatar']; ?>" style="width: 30px; height: 30px; border-radius: 50%;" alt="User Avatar">
     <?php endif; ?>
     </a>
 

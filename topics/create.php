@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   $body = $_POST['body'];
   $username = $_SESSION['name'];
 
-  $image = $conn->query("SELECT register.avatar AS image FROM topic JOIN register
+  $image = $conn->query("SELECT register.avatar AS image FROM topic LEFT JOIN register
           ON topic.username = register.username");
   $theimage = $image->fetch();
 
