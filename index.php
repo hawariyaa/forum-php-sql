@@ -32,7 +32,7 @@ $topic = $conn->query("SELECT topic.id As id, topic.title AS title, topic.catago
 									<div class="topic-info">
 										<a href="category.html"><?php echo $topic->catagory; ?></a> >> <a href="profile.html"><?php echo $topic->username; ?></a> >> Posted on: <?php echo $topic->date; ?>
 										<span class="color badge pull-right"><?php echo $topic->countreply; ?></span><br>
-                    <button type="button" href="delete.php?id=<?php echo $topic->id; ?>" class="btn btn-danger">Delete</button>
+                    <button type="button" href="topics/delete.php?id=<?php echo $topic->id; ?>" class="btn btn-danger">Delete</button>
                     <button type="button" class="btn btn-warning">Like</button>
 									</div>
 								</div>

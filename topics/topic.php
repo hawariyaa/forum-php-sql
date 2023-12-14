@@ -48,6 +48,8 @@ $result = $number->fetch(PDO::FETCH_OBJ);
 							<div class="col-md-10">
 								<div class="topic-content pull-right">
 									<p><?php echo $thetopic->body; ?></p>
+                  <button type="button" href="delete.php?id=<?php echo $thetopic->id; ?>" class="btn btn-danger">Delete</button>
+                  <button type="button" class="btn btn-warning">Like</button>
 								</div>
 							</div>
 						</div>
